@@ -18,17 +18,24 @@
 
 //! ye copy by value ka example hai.
 //TODO:2
+// 1. 
 // let x = 'anil';
 // let y = x;
 // y = 'sidhu';
 // console.log(x); // anil 
+// console.log(y); // sidhu
 
+// 2.
+// let a = 2;
+// let b = a;
+// console.log(a); // 2
+// console.log(b);  // 2
 
 // object me jo problem aa rhi thi uska solution hai deep copy and sallow copy
 
 //TODO:3 solution off first example - isse hi ham Shallow copy bolte hai 
 //! Shallow copy se ham keval ek level tak hi value ko handle kar sakte hai 
-//! object ke andar object aa jata hai tak shallow copy se ham second object ki value ko change nhi kar sakte hai 
+//! object ke andar object aa jata hai tab shallow copy se ham second object ki value ko change nhi kar sakte hai 
 // let obj = {
 //     name: 'peter'
 // };
@@ -105,22 +112,22 @@
 
 //TODO:7 - use of Lodash
 
-let obj = {
-    name: 'peter',
-    address: {
-        city: 'Indore',
-        state: 'MP'
-    },
-    getData: function(){
-        return 'all data is here';
-    }
-};
+// let obj = {
+//     name: 'peter',
+//     address: {
+//         city: 'Indore',
+//         state: 'MP'
+//     },
+//     getData: function(){
+//         return 'all data is here';
+//     }
+// };
 
-console.log(obj); // {name: 'peter', address: {city: 'Bhopal', state: 'MP'}}
+// console.log(obj); // {name: 'peter', address: {city: 'Bhopal', state: 'MP'}}
 
-let user = _.cloneDeep(obj);
-user.address.city = 'Bhopal';
+// let user = _.cloneDeep(obj);
+// user.address.city = 'Bhopal';
 
-console.log("object is: ",obj); //object is: {name: 'peter', address: {city: 'Indore', state: 'MP'}, getData: f}
-console.log("user is: ",user); //user is: {name: 'peter', address: {city: 'Bhopal', state: 'MP'}}
+// console.log("object is: ",obj); //object is: {name: 'peter', address: {city: 'Indore', state: 'MP'}, getData: f}
+// console.log("user is: ",user); //user is: {name: 'peter', address: {city: 'Bhopal', state: 'MP'}, getData: f}
 
