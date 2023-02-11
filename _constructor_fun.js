@@ -104,3 +104,13 @@ depositForm.addEventListener('submit',(e) => {
     matchUser.deposit(+amount.value);
     console.log(AccountsData)
 })
+
+
+// Use of Localstorage 
+        // const AccountData = [hansrajAccount, shivAccount];
+        // localStorage.setItem("Customers", JSON.stringify(AccountData));
+        // const customers = localStorage.getItem('Customers');
+        // const actData = JSON.parse(customers);
+        // console.log(actData[0]);  // {customerName: 'hasnraj singh tomar', balance: 1000, accountNumber: 1674128901198}
+        // console.log(actData[1]);  // {customerName: 'shiv yadav', balance: 1000, accountNumber: 1674128901198}
+        // localStorage.clear();
