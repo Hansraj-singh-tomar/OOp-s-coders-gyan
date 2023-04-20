@@ -1,8 +1,10 @@
 class BankAccount {
     customerName;
     accountNumber;
+    // we can let balance = 0; also it will make provate our property
     // _balanace = 0; // pehle ye sign use karte the properties ko private karne ke liye but now we use #
-    // #balance = 0;  // ab ye private propertie me convert ho gya hai 
+    #balance = 0;  // ab ye private propertie me convert ho gya hai 
+    // private property must be declared outside of constructor function // otherwise it will give us error 
     
     //! private properties and method ko ham keval ussi class ke andar hi use kar sakte hai, inhe ham subclass me bhi access nhi kar sakte hai 
 

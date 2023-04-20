@@ -18,11 +18,79 @@
         <button>Deposite Amount</button>
       </form> -->
 
-      <button onclick="getPerson()">Click Me</button>  
+      <!-- <button onclick="getPerson()">Click Me</button>   -->
 
       <!-- JavaScript Part -->
       <script>  
+
+      // static method and properties ko use karne ke liye hame 
+      // uss class User. karke uss static method/propertie ko use karna hai 
+        class User {
+            static id = 1;
+            constructor(name, age, income){
+                this.name = name;
+                this.age = age;
+                this.income = income;
+                this.id = User.id++;
+            }
+
+            static sortByAge(a, b){
+                return a.age - b.age;
+            }   
+
+            static sortByIncome(a,b){
+                return a.income - b.income;
+            }
+        }    
         
+        const user1 = new User("hansraj", 24, 20000)
+        const user2 = new User("hansraj singh", 22, 10000)
+        const user3 = new User("hansraj singh tomar",26, 30000)
+
+        const users = [user1, user2, user3]
+
+        users.sort(User.sortByAge); // User.sortUserByAge is returning (a,b) => a.age - b.age
+        console.log(users);
+
+        users.sort(User.sortByIncome)
+        console.log(users);
+
+
+        // configuration ke liye kaise use hota hai ye static methof and prpoperties
+
+
+        class customer{
+            
+            static id = 1;
+
+            static cache = {
+                "1" : "hansraj singh tomar"
+            }
+
+            constructor(name, age, income){
+                this.name = name;
+                this.age = age;
+                this.income = income;
+                this.id = User.id++
+            }
+
+            // static checkCache(){
+            //     console.log(this.cache);
+            // }
+
+            static hasInCache(){
+                // this.checkCache();
+                console.log(this.cache);
+            }
+
+            static {
+                console.log("it will initialized at once when our static method called");
+            }
+
+
+        } 
+
+        customer.hasInCache();
       </script>
 </body>
 </html>

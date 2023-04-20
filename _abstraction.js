@@ -2,6 +2,9 @@
 //! Hide Details
 //! Show Essentials
 
+// abstration is design and thought process 
+// encapsulation is implementation 
+
 function Employee(name, age, baseSalary){
     this.name = name;
     this.age = age;
