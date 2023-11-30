@@ -12,9 +12,9 @@
 // const hansrajAccount = new BankAccount("hansraj singh",1000);
 // const shivAccount = new BankAccount("shiv yadav");
 
-// ! jab bhi ham object banate hai to hamare computer ki memory ke andar ye har ek alag-alag object ke liye alag-alag memory space banegi
-// todo: is constructor function se ham jitne chahe utne object bna sakte hai 
-// ? hansrajAccount and shivAccount instance hai iss BankAccount constructor function ke 
+// jab bhi ham object banate hai to hamare computer ki memory ke andar ye har ek alag-alag object ke liye alag-alag memory space banegi
+// is constructor function se ham jitne chahe utne object bna sakte hai 
+// hansrajAccount and shivAccount instance hai iss BankAccount constructor function ke 
 
 // console.log(hansrajAccount,shivAccount);
 
@@ -31,34 +31,34 @@
 // =====================================================================================================================
 
 
-// function BankAccount(customerName,balance = 0){  
-//     // properties ya variable 
-//     this.customerName = customerName;  
-//     this.accountNumber = Date.now();
-//     this.balance =  balance;
+function BankAccount(customerName,balance = 0){  
+    // properties ya variable 
+    this.customerName = customerName;  
+    this.accountNumber = Date.now();
+    this.balance =  balance;
     
-//     // methods ya function // but method ko optimize karne ka ye proper way nhi hai isko iske liye ham inharitance ka use karenge 
-//     this.deposit = function(amount){
-//         this.balance = this.balance + amount; 
-//     } 
+    // methods ya function // but method ko optimize karne ka ye proper way nhi hai isko iske liye ham inharitance ka use karenge 
+    this.deposit = function(amount){
+        this.balance = this.balance + amount; 
+    } 
 
-//     this.withdraw = (amount) => {
-//         this.balance = this.balance - amount;
-//     }
+    this.withdraw = (amount) => {
+        this.balance = this.balance - amount;
+    }
     
-//  }
+ }
 
-// const hansrajAccount = new BankAccount("hansraj singh",1000);
-// const shivAccount = new BankAccount("shiv yadav");
+const hansrajAccount = new BankAccount("hansraj singh",1000);
+const shivAccount = new BankAccount("shiv yadav");
 
-// hansrajAccount.deposit(5000);
-// shivAccount.deposit(1000);
-// hansrajAccount.withdraw(2000);
+hansrajAccount.deposit(5000);
+shivAccount.deposit(1000);
+hansrajAccount.withdraw(2000);
 
-// console.log(hansrajAccount);
+console.log(hansrajAccount);
 
 
-// ===================================================================================================================
+// ================================== VanillaJS with OOPS =================================================================================
 
 function BankAccount(customerName,balance = 0){  
     // properties ya variable 
@@ -99,8 +99,7 @@ const amount = document.querySelector("#amount");
 
 depositForm.addEventListener('submit',(e) => {
     e.preventDefault();
-    const matchUser = AccountsData.find((user) =>  user.accountNumber === +accountNumber.value
-    );
+    const matchUser = AccountsData.find((user) =>  user.accountNumber === +accountNumber.value);
     matchUser.deposit(+amount.value);
     console.log(AccountsData)
 })

@@ -4,93 +4,261 @@
     <title>Practice file For OOPS Concepts</title>
 </head>
 <body>
-      <!-- HTML part -->
-      <h1>Practice file For OOPS Concepts.</h1> 
-      <!-- <form id="accountForm">
-        <input id="customerName" type="text" placeholder="Enter your Name">
-        <input id="balance" type="number" placeholder="Initial Amount">
-        <button>Create Account</button>
-      </form>
-      <hr>
-      <form id="depositeForm">
-        <input id="accountNumber" type="number" placeholder="Account Number">
-        <input id="amount" type="number" placeholder="Amount">
-        <button>Deposite Amount</button>
-      </form> -->
+    <!-- 1. Constructor -->
 
-      <!-- <button onclick="getPerson()">Click Me</button>   -->
+    <script>
+      //By Akshay saini
+      // const p = new Promise((resolve, reject) => {
+      //   setTimeout(() => {
+      //     resolve("Promise Resolved Value")
+      //   }, 5000)
+      // })
 
-      <!-- JavaScript Part -->
-      <script>  
+      // Note - jaise hi await dekhne ko milta hai js engine uss async function ko suspen kar deta hai or usse exexution context se remove kar deta hai 
+      // or jaise hi vo promise resolve ho jata hai vo again uss async function ko execution context push kar deta hai 
+      // or vo vhi se execute karne lgata hai jha se vo pop out hua tha 
 
-      // static method and properties ko use karne ke liye hame 
-      // uss class User. karke uss static method/propertie ko use karna hai 
-        class User {
-            static id = 1;
-            constructor(name, age, income){
-                this.name = name;
-                this.age = age;
-                this.income = income;
-                this.id = User.id++;
-            }
+      // 1.
+      // Using Promises 
+      // async function getData(){
+      //   p.then((res) => console.log(res));
+      //   console.log("Namaste Javascript");
+      // }
+      // getData() 
+      // output - Namaste javascript 
+      //          Promise Resolved value 
 
-            static sortByAge(a, b){
-                return a.age - b.age;
-            }   
+      // 2.
+      // Using Async_await 
+      // async function handlePromise(){
+      //   const val = await p;
+      //   console.log(val);
+      //   console.log("Namaste Javascript");
+      // }
+      // handlePromise();
+      // // ye pura ek sath 5sec. baad execute hoga
+      // // the code was waiting at line number 27 for 5 Sec then execute altogether
+      // // JS engine was waiting for promise to resolved - But internally it's not happening
+      // // output - Promise Resolved value
+      // //          Namaste Javascript
 
-            static sortByIncome(a,b){
-                return a.income - b.income;
-            }
-        }    
-        
-        const user1 = new User("hansraj", 24, 20000)
-        const user2 = new User("hansraj singh", 22, 10000)
-        const user3 = new User("hansraj singh tomar",26, 30000)
+      // 3.
+      // async function handlePromise() {
+      //   console.log("Hello World");
 
-        const users = [user1, user2, user3]
+      //   // Js Engine was waiting for promise to resolved - But internally it's not happening
+      //   const val = await p;
+      //   console.log(val);
+      //   console.log("Namaste Javascript");
+      // }
+      // handlePromise();
+      // output - Hello world
+      //          Promise Resolved value
+      //          Namaste Javascript
+      // Hello World run first then after 5Sec. next two line run
 
-        users.sort(User.sortByAge); // User.sortUserByAge is returning (a,b) => a.age - b.age
-        console.log(users);
+      // // 4. What will happen in case of two promises 
+      // const p1 = new Promise((resolve, reject) => {
+      //   setTimeout(() => {
+      //     resolve("Promise Resolved Value")
+      //   }, 5000)
+      // })
 
-        users.sort(User.sortByIncome)
-        console.log(users);
+      // const p2 = new Promise((resolve, reject) => {
+      //   setTimeout(() => {
+      //     resolve("Promise-2 Resolved Value")
+      //   }, 10000)
+      // }) 
+      // async function handlePromise() {
+      //   console.log("Hello World");
+
+      //   // Js Engine was waiting for promise to resolved - But internally it's not happening
+      //   const val = await p1;
+      //   console.log(val);
+      //   console.log("Namaste Javascript");
+
+      //   const val2 = await p2;
+      //   console.log(val2);
+      //   console.log("Namaste Javascript");
+      // }
+      // handlePromise();
+      // // output - Hello world
+      // // pehle 5 Sec vala promise resolved hoga than 10 sec vala promise resolve hoga
+      // //          Promise Resolved value
+      // //          Namaste Javascript
+      // // After 10 sec.
+      // //          Promise-2 Resolved value
+      // //          Namaste Javascript
+
+      // 5. What will happen in case of two promises 
+      // const p1 = new Promise((resolve, reject) => {
+      //   setTimeout(() => {
+      //     resolve("Promise Resolved Value")
+      //   }, 10000)
+      // })
+
+      // const p2 = new Promise((resolve, reject) => {
+      //   setTimeout(() => {
+      //     resolve("Promise-2 Resolved Value")
+      //   }, 5000)
+      // }) 
+      // async function handlePromise() {
+      //   console.log("Hello World");
+
+      //   // Js Engine was waiting for promise to resolved - But internally it's not happening
+      //   const val = await p1;
+      //   console.log(val);
+      //   console.log("Namaste Javascript");
+
+      //   const val2 = await p2;
+      //   console.log(val2);
+      //   console.log("Namaste Javascript");
+      // }
+      // handlePromise();
+      // output - Hello world
+      // dono 10 Sec baad resolve honge
+      //          Promise Resolved value
+      //          Namaste Javascript
+      //          Promise-2 Resolved value
+      //          Namaste Javascript
+
+      // Note - JS engine just appear to waiting, it not consuming memory or occupaying call stack
+      // sabse pehle hamara hanflePromise function call stack me aayega and then 
+      // it will start executinf line by line then 
+      // it will print hello world and then 
+      // as it see await this handlePromise execution suspent and this will move outof call stack
+      // and it won't block the call stack  
+      // and then it will wait till than it p1 won't resolved than only it will move ahead
+      // as promise resolve this handlePromise function come again inside the call stack
+      // and it again start executing but this time it will start executing where it actually left.
+
+/// --------------------------------------------------------------------------------------------------------------
+      
+      // Example with class 
+
+      // class Ecom{
+      //   constructor(){
+      //     this.cart = [];
+      //     this.order = null;
+      //     this.walletBalance = 100;
+      //   }
+
+      //   addItem(item){
+      //     this.cart.push(item);
+      //     return Promise.resolve(`Added ${item.name} to the cart`)
+      //   }
+
+      //   createOrder(){
+      //     if(this.cart.length === 0){
+      //       return Promise.reject("Cart is empty, Please add item into cart")
+      //     }
+
+      //     this.order = {
+      //       items: this.cart,
+      //       total: this.calculateTotal()
+      //     }
+
+      //     return Promise.resolve("order created");
+      //   }
+
+      //   calculateTotal(){
+      //     return this.cart.reduce((total, item) => item.price, 0)
+      //   }
+
+      //   proceedToPayment() {
+      //     if (!this.order) {
+      //       return Promise.reject("No order to proceed with payment.");
+      //     }
+
+      //     if (this.order.total > this.walletBalance) {
+      //       return Promise.reject("Insufficient wallet balance.");
+      //     }
+
+      //     this.walletBalance -= this.order.total;
+
+      //     return Promise.resolve("Payment successful");
+      //   }
+
+      //   orderSummery(){
+      //     if(!this.order){
+      //       return Promise.reject("No order to display")
+      //     }
+
+      //     return Promise.resolve(this.order)
+      //   }
+
+      //   updateWallet(amount){
+      //     this.walletBalance += amount;
+      //     return Promise.resolve(`Wallet Updated, current Balance ${this.walletBalance}`)
+      //   }
+      // }
+
+      // const cart = new Ecom();
+
+      // cart.addItem({name: "kurta", price: 10})
+      // .then((res) => {
+      //   console.log(res);
+      //   return cart.createOrder();
+      // })
+      // .then((res) => {
+      //   console.log(res);
+      //   return cart.proceedToPayment()
+      // })
+      // .then((res) => {
+      //   console.log(res);
+      //   return cart.orderSummery();
+      // })
+      // .then((res) => {
+      //   console.log(res);
+      //   return cart.updateWallet(1000);
+      // })
+      // .then((res) => {
+      //   console.log(res);
+      // })
+
+      // const p = new Promise((resolve, reject) => {
+      //   if(!true){
+      //     reject(new Error("invalid item found"))
+      //   }
+      //   resolve("successful")
+      // })
+
+      // p.then((res) => {
+      //   console.log(res);
+      // })
 
 
-        // configuration ke liye kaise use hota hai ye static methof and prpoperties
+      // firstly run creation phase than exexution phase works
+      // that is why we are getting an 10.
+      // function a(){
+      //   var b = 10;
+      //   c();
+      //   function c(){
+      //     console.log(b);
+      //   }
+      // }
+      // a()
 
+      // //Block scope
 
-        class customer{
-            
-            static id = 1;
+      // {
+      //   var a = 10;
+      //   let b = 20;
+      //   const c = 30;
+      // }
 
-            static cache = {
-                "1" : "hansraj singh tomar"
-            }
-
-            constructor(name, age, income){
-                this.name = name;
-                this.age = age;
-                this.income = income;
-                this.id = User.id++
-            }
-
-            // static checkCache(){
-            //     console.log(this.cache);
-            // }
-
-            static hasInCache(){
-                // this.checkCache();
-                console.log(this.cache);
-            }
-
-            static {
-                console.log("it will initialized at once when our static method called");
-            }
-
-
-        } 
-
-        customer.hasInCache();
-      </script>
+      function x(){
+        for(var i = 1; i < 5; i++){
+          function y(i){
+            setTimeout(() => {
+              console.log(i);
+            }, i*1000)
+          }
+          y(i)
+        }
+        console.log("namaste js");
+      }
+      x()
+    </script>
 </body>
 </html>
